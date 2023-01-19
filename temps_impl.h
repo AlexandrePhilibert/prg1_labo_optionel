@@ -43,4 +43,24 @@ std::ostream& operator<<(std::ostream& os, const Temps<T>& t) {
    return os << std::setfill('0') << std::setw(2) << t.heure << ":" << std::setw(2) << t.minute << ":" << std::setw(2) << t.seconde;
 }
 
+template<typename T>
+Temps<T> Temps<T>::operator+(const Temps<T> &t) {
+   return Temps(heure + t.heure, minute + t.minute, seconde + t.seconde);
+}
+
+template<typename T>
+Temps<T>& Temps<T>::operator+=(const Temps<T> &t) {
+   return *this = *this + t;
+}
+
+template<typename T>
+Temps<T> Temps<T>::operator-(const Temps<T> &t) {
+   return Temps(heure - t.heure, minute - t.minute, seconde - t.seconde);
+}
+
+template<typename T>
+Temps<T>& Temps<T>::operator-=(const Temps<T> &t) {
+   return *this = *this - t;
+}
+
 #endif //PRG1_LABO_OPTIONEL_TEMPS_IMPL_H

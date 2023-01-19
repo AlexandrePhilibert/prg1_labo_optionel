@@ -29,9 +29,9 @@ public:
    Temps<T>& operator=(Temps<T>& t);
    bool operator==(const Temps<T>& t);
    bool operator!=(const Temps<T>& t);
-   Temps<T>& operator+(const Temps<T>& t);
+   Temps<T> operator+(const Temps<T>& t);
    Temps<T>& operator+=(const Temps<T>& t);
-   Temps<T>& operator-(const Temps<T>& t);
+   Temps<T> operator-(const Temps<T>& t);
    Temps<T>& operator-=(const Temps<T>& t);
 
    explicit operator float() const;
