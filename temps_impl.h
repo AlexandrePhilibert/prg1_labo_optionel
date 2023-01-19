@@ -1,7 +1,12 @@
 #ifndef PRG1_LABO_OPTIONEL_TEMPS_IMPL_H
 #define PRG1_LABO_OPTIONEL_TEMPS_IMPL_H
 
+#include <iomanip>
+
 #include "temps.h"
+
+template<typename T>
+Temps<T>::Temps(T h, T m, T s): heure(h), minute(m), seconde(s) {}
 
 template<typename T>
 T Temps<T>::getHeure() const {
@@ -32,5 +37,10 @@ template<typename T>
 void Temps<T>::setSecondes(T s) {
    seconde = s;
 };
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Temps<T>& t) {
+   return os << std::setfill('0') << std::setw(2) << t.heure << ":" << std::setw(2) << t.minute << ":" << std::setw(2) << t.seconde;
+}
 
 #endif //PRG1_LABO_OPTIONEL_TEMPS_IMPL_H
