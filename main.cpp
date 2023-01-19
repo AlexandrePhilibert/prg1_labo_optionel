@@ -16,5 +16,12 @@ int main() {
       cout << t3 << endl;
    }
 
+   {
+      Temps<int> t1(01, 25, 30);
+      string st1 = (string) t1;
+
+      cout << st1;
+   }
+
    return EXIT_SUCCESS;
 }
