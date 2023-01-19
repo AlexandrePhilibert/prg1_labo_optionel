@@ -73,6 +73,47 @@ Temps<T>& Temps<T>::operator-=(const Temps<T> &t) {
 }
 
 template<typename T>
+Temps<T> &Temps<T>::operator=(const Temps<T> &other) {
+    heure = other.heure;
+    minute = other.minute;
+    seconde = other.seconde;
+    return *this;
+}
+
+template<typename T>
+bool Temps<T>::operator==(const Temps<T> &t) {
+    return heure == t.heure
+           && minute == t.minute
+           && seconde == t.seconde;
+}
+
+template<typename T>
+bool Temps<T>::operator!=(const Temps<T> &t) {
+    return !(*this == t);
+}
+
+
+template<typename T>
+Temps<T>::operator long double() const {
+    return heure + (minute / 60.0l) + (seconde / 3600.0l);
+}
+
+template<typename T>
+Temps<T>::operator float() const {
+    return float((long double) *this);
+}
+
+template<typename T>
+Temps<T>::operator double() const {
+    return double((long double) *this);
+}
+
+template<typename T>
+Temps<T>::operator long long() const {
+    return heure * 3600ll + minute * 60ll + seconde;
+}
+
+template<typename T>
 Temps<T>::operator std::string() const {
    std::stringstream sstream;
 

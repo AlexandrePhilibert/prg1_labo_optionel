@@ -8,41 +8,59 @@ template<typename T>
 class Temps;
 
 template<typename T>
-std::ostream& operator<<(std::ostream& os, const Temps<T>& t);
+std::ostream &operator<<(std::ostream &os, const Temps<T> &t);
 
 template<typename T>
 class Temps {
-friend std::ostream& operator<< <T>(std::ostream& os, const Temps<T>& t);
+    friend std::ostream &operator<<<T>(std::ostream &os, const Temps<T> &t);
+
 public:
-   Temps(T h, T m, T s);
-   Temps(const Temps<T>& t);
-   Temps(const T& s);
+    Temps(T h, T m, T s);
 
-   T getHeure() const;
-   T getMinute() const;
-   T getSeconde() const;
+    Temps(const Temps<T> &t);
 
-   void setHeures(T h);
-   void setMinute(T m);
-   void setSecondes(T s);
+    Temps(const T &s);
 
-   Temps<T>& operator=(Temps<T>& t);
-   bool operator==(const Temps<T>& t);
-   bool operator!=(const Temps<T>& t);
-   Temps<T> operator+(const Temps<T>& t);
-   Temps<T>& operator+=(const Temps<T>& t);
-   Temps<T> operator-(const Temps<T>& t);
-   Temps<T>& operator-=(const Temps<T>& t);
+    T getHeure() const;
 
-   explicit operator float() const;
-   explicit operator double() const;
-   explicit operator long double() const;
-   explicit operator long long() const;
-   explicit operator std::string() const;
+    T getMinute() const;
+
+    T getSeconde() const;
+
+    void setHeures(T h);
+
+    void setMinute(T m);
+
+    void setSecondes(T s);
+
+    Temps<T> &operator=(const Temps<T> &other);
+
+    bool operator==(const Temps<T> &t);
+
+    bool operator!=(const Temps<T> &t);
+
+    Temps<T> operator+(const Temps<T> &t);
+
+    Temps<T> &operator+=(const Temps<T> &t);
+
+    Temps<T> operator-(const Temps<T> &t);
+
+    Temps<T> &operator-=(const Temps<T> &t);
+
+    explicit operator float() const;
+
+    explicit operator double() const;
+
+    explicit operator long double() const;
+
+    explicit operator long long() const;
+
+    explicit operator std::string() const;
+
 private:
-   T heure;
-   T minute;
-   T seconde;
+    T heure;
+    T minute;
+    T seconde;
 };
 
 #include "temps_impl.h"
